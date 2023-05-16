@@ -1,0 +1,985 @@
+{
+	"info": {
+		"_postman_id": "acdec84a-0197-4116-9835-07bf73ea783b",
+		"name": "api-search-house",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18477377"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "Tạo tài khoản",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"phiduong\",\n    \"password\":\"12345678\",\n    \"fullName\":\"Dương Đăng Phi\",\n    \"email\":\"duongphikm@gmail.com\",\n    \"phone\":\"0826660617\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=DE5C3FC9C62E0C4EA51ED846565405D2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"phiduong\",\n    \"password\":\"dungdang\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGlkdW9uZyIsImV4cCI6MTY4MDgwNzQ1MCwiaWF0IjoxNjgwNzg5NDUwfQ._2-0wrkCuTCSftfkBfhWerIWfYfC2CytSB6eUlgczCxYHt_yRzhrf75PJKPOBcOUoWDIH0yg_6oz4HvYN9jKhg",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8088/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit profile user",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGlkdW9uZyIsImV4cCI6MTY4MDgxMzYzMCwiaWF0IjoxNjgwNzk1NjMwfQ.7iTYYepbWRqkby0BW6J9igN2JUZiweXcSX9x3qrfMRLBPI4pPL4OisugZl6EhF0WrmRBOImq8VJFxPhokEnHDQ"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=DE5C3FC9C62E0C4EA51ED846565405D2; JSESSIONID=DE5C3FC9C62E0C4EA51ED846565405D2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"avaUrl\":\"haha\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Thay password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"oldPassword\": \"admin1\",\n    \"newPassword\": \"admin2\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/auth/change-password",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gửi email quên mật khẩu",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/auth/forgot-mail/user/phiduong",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"auth",
+								"forgot-mail",
+								"user",
+								"phiduong"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset pass dựa trên link trong email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"phìduong\",\n    \"code\": \"BlmKUXaAYd\", \n    \"newPassword\":\"alo223232\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/auth/reset-pass",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"auth",
+								"reset-pass"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lấy profile theo username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/user/{username}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"{username}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"item": [
+				{
+					"name": "Tạo mới tin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MjYzMjA1NywiaWF0IjoxNjgyNjE0MDU3fQ.BsFKyoCwxrS-ym5K4LtS-_MKlUUad3TBJDhAizhaCudvd4eImQie2d0On7iFHkDW3BjTubXq82jsIIVscHaRyg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Trung cư yên Hoà\",\n    \"price\":2500000000,\n    \"description\":\"Nhà trọ sạch sẽ có điều hoà tủ lạnh\",\n    \"address\":\"cau giay, quan hoa, ha noi\",\n    \"district\":\"Quận Cầu Giấy\",\n    \"street\":\"Phường Quan Hoa\",\n    \"city\":\"Thành phố Hà Nội\",\n    \"lat\":\"21.027229\",\n    \"lnp\":\"105.792501\",\n    \"type\":\"APARTMENT\",\n    \"imagesUrl\":[\"alo\", \"1\", \"2dadasfadsfadfadfdf\"],\n    \"bedroomsDescription\":\"ádad\",\n    \"numberOfBedrooms\":1,\n    \"toiletDescription\":\"adasdasd\",\n    \"kitchensDescription\":\"dsasadas\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/post",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy posts theo username người tạo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/posts/user/phiduong",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"posts",
+								"user",
+								"phiduong"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy theo khoảng cách",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MDgyMzEyNSwiaWF0IjoxNjgwODA1MTI1fQ.0-CW6EFjDSRRpwDPq3a12e2KXQvMZz-Pc-YU509tvJ0ZNVTJIOJpcpNUF9J7yjEq8TGUWbteBYbz4h8ZDQGf1Q"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=DE5C3FC9C62E0C4EA51ED846565405D2"
+							}
+						],
+						"url": {
+							"raw": "localhost:8088/api/posts/distance?lat=21.023547&lnp=105.792267&distance=100",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"posts",
+								"distance"
+							],
+							"query": [
+								{
+									"key": "lat",
+									"value": "21.023547"
+								},
+								{
+									"key": "lnp",
+									"value": "105.792267"
+								},
+								{
+									"key": "distance",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/post/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"post",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cập nhật post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MTc2OTk1NywiaWF0IjoxNjgxNzUxOTU3fQ.08poCke830RULkxnmGyPqObkuPaC6Loe2yllrAEM-G_-J3phINZ9tORNn3kzSQ_AUmGWVkwaxJekkJPrnosBwA"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=DE5C3FC9C62E0C4EA51ED846565405D2"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"imagesUrl\":[\"Nhà trọ Công viên cầu Giấy32232\"]\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/api/post/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"post",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api chỉnh sửa bài post",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MTM4NzIwOSwiaWF0IjoxNjgxMzY5MjA5fQ.-hrh9rTG8kx2a7jkSbdRxiIJ6XrDz8R8EpDblZh3xxkWmOw--_gDXnfFmtOB0fC8CvDiKfN8ME_slBwAEQCesg"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Nhà trọ Yên Hoà\",\n    \"price\":200000,\n    \"street\":\"Phường Dịch Vọng Hậu\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/api/post/6",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"post",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Lấy danh sách user với quyền admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MDgxMTU3MCwiaWF0IjoxNjgwNzkzNTcwfQ.TIctpp3V3B02uLEXzw8sEUzj0U4ypZGVQSr9mo-2V0XFdis7CYsaStD19RJQ0E8DNIVymm9pD-owC37JYP88yg"
+							},
+							{
+								"key": "Cookie",
+								"value": "JSESSIONID=DE5C3FC9C62E0C4EA51ED846565405D2"
+							}
+						],
+						"url": {
+							"raw": "localhost:8088/api/admin/users",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api khoá tài khoản",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGlkdW9uZzEiLCJleHAiOjE2ODA4MTUyMDIsImlhdCI6MTY4MDc5NzIwMn0.gZSs3ZrI8IjmeGixICX0ZApbkM2Kxg_R3nycEWjqzEPvJbkSI1qOSHGpt6NYLbs-SGDwqI9rRdnRYsQEqp7efg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"phiduong1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8088/api/admin/ban",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"admin",
+								"ban"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "address",
+			"item": [
+				{
+					"name": "api Lấy các thành phố",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/address/cities",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"address",
+								"cities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy quận, Huyện theo thành phố (Cần truyền đúng nhưng data trong response api Cities)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/address/district?city=Thành phố Hà Nội",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"address",
+								"district"
+							],
+							"query": [
+								{
+									"key": "city",
+									"value": "Thành phố Hà Nội"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lấy Phường, Xã theo Quận, Huyện(Cần truyền đúng như trong response)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/address/street?district=Quận Cầu Giấy",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"address",
+								"street"
+							],
+							"query": [
+								{
+									"key": "district",
+									"value": "Quận Cầu Giấy"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"item": [
+				{
+					"name": "search theo địa chỉ và filter theo khoảng giá",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/search/houses?keyword=Hà Nộ&min_price=0&max_price=1000&lat=21.024182&lnp=105.794011&distance=10000000000&type=APARTMENT&numberOfBedrooms=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"search",
+								"houses"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "Hà Nộ"
+								},
+								{
+									"key": "min_price",
+									"value": "0"
+								},
+								{
+									"key": "max_price",
+									"value": "1000"
+								},
+								{
+									"key": "lat",
+									"value": "21.024182"
+								},
+								{
+									"key": "lnp",
+									"value": "105.794011"
+								},
+								{
+									"key": "distance",
+									"value": "10000000000"
+								},
+								{
+									"key": "type",
+									"value": "APARTMENT"
+								},
+								{
+									"key": "numberOfBedrooms",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "search kết quả trả về địa chỉ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/search/address?keyword=Quan hoa&min_price=10000&max_price=2000000000000&lat=21.024182&lnp=105.794011&distance=1100000&type=HOUSE_LAND&numberOfBedrooms=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"search",
+								"address"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "Quan hoa"
+								},
+								{
+									"key": "min_price",
+									"value": "10000"
+								},
+								{
+									"key": "max_price",
+									"value": "2000000000000"
+								},
+								{
+									"key": "lat",
+									"value": "21.024182"
+								},
+								{
+									"key": "lnp",
+									"value": "105.794011"
+								},
+								{
+									"key": "distance",
+									"value": "1100000"
+								},
+								{
+									"key": "type",
+									"value": "HOUSE_LAND"
+								},
+								{
+									"key": "numberOfBedrooms",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search theo title và địa chỉ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/search/houses/address-title?keyword=c&min_price=0&lat=21.024182&lnp=105.794011&distance=10000&numberOfBedrooms=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"search",
+								"houses",
+								"address-title"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "c"
+								},
+								{
+									"key": "min_price",
+									"value": "0"
+								},
+								{
+									"key": "lat",
+									"value": "21.024182"
+								},
+								{
+									"key": "lnp",
+									"value": "105.794011"
+								},
+								{
+									"key": "distance",
+									"value": "10000"
+								},
+								{
+									"key": "numberOfBedrooms",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "tạo mới 1 comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MTY4MjY3NiwiaWF0IjoxNjgxNjY0Njc2fQ.opPnKpcKRc9AZxy8lppc4HNXWLJ035PKvKAC-z3InVagIa3thbqf7edB1U2C1VGNgH-ZJV7Vh8r54wZ2KhTLyw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"comment2\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/api/comment/post/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"comment",
+								"post",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "lấy comment theo postId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/comment/post/3",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"comment",
+								"post",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tạo child comment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MTY4MjY3NiwiaWF0IjoxNjgxNjY0Njc2fQ.opPnKpcKRc9AZxy8lppc4HNXWLJ035PKvKAC-z3InVagIa3thbqf7edB1U2C1VGNgH-ZJV7Vh8r54wZ2KhTLyw"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"content\":\"child comment\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/api/comment/child/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"comment",
+								"child",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Xoá 1 comment",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY4MTY4MjY3NiwiaWF0IjoxNjgxNjY0Njc2fQ.opPnKpcKRc9AZxy8lppc4HNXWLJ035PKvKAC-z3InVagIa3thbqf7edB1U2C1VGNgH-ZJV7Vh8r54wZ2KhTLyw"
+							}
+						],
+						"url": {
+							"raw": "localhost:8088/api/comment/7",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"comment",
+								"7"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "rating",
+			"item": [
+				{
+					"name": "Lấy rating theo username",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/api/rating/user/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"rating",
+								"user",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "tạo mới rating",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGlkdW9uZyIsImV4cCI6MTY4MTY4ODE1NCwiaWF0IjoxNjgxNjcwMTU0fQ.hHV7MzLDniCY4QdWjx_jrqVTNGF3ow0veO_1F31tXBIZmFWomVNWC4TkUylgRLGmDmSHx5AnF2fZw4NI-FAbBA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ratingValue\":1000,\n    \"ratingContent\":\"\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/api/rating/user/admin",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"rating",
+								"user",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "cập nhật rating",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGlkdW9uZyIsImV4cCI6MTY4MTY4ODE1NCwiaWF0IjoxNjgxNjcwMTU0fQ.hHV7MzLDniCY4QdWjx_jrqVTNGF3ow0veO_1F31tXBIZmFWomVNWC4TkUylgRLGmDmSHx5AnF2fZw4NI-FAbBA"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ratingValue\":5,\n    \"ratingContent\":\"adasdasd\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8088/api/rating/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"rating",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "xoá rating theo id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJwaGlkdW9uZyIsImV4cCI6MTY4MTY4ODE1NCwiaWF0IjoxNjgxNjcwMTU0fQ.hHV7MzLDniCY4QdWjx_jrqVTNGF3ow0veO_1F31tXBIZmFWomVNWC4TkUylgRLGmDmSHx5AnF2fZw4NI-FAbBA"
+							}
+						],
+						"url": {
+							"raw": "localhost:8088/api/rating/4",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"api",
+								"rating",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
