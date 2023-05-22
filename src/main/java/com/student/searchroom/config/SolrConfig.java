@@ -2,6 +2,7 @@ package com.student.searchroom.config;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.impl.HttpSolrClient;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,9 +15,12 @@ import org.springframework.data.solr.repository.config.EnableSolrRepositories;
 @ComponentScan
 public class SolrConfig {
 
+    @Value("${solr.url}")
+    private String solrUrl;
+
     @Bean
     public SolrClient solrClient() {
-        return new HttpSolrClient.Builder("http://20.39.185.145:8500/solr").build();
+        return new HttpSolrClient.Builder(solrUrl).build();
     }
 
     @Bean
