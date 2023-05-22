@@ -61,4 +61,4 @@ app:
     password: admin
 
 solr:
-  url: http://20.39.185.145:8500/solr
+  url: http://localhost:8600/solr

@@ -32,7 +32,7 @@ public class House implements Serializable {
     private String district;
     private String street;
     private String bedroomsDescription;
-    private int numberOfBedrooms;
+    private Integer numberOfBedrooms;
     private String toiletDescription;
     private String kitchensDescription;
     private Double area;

@@ -41,6 +41,10 @@ public class SearchService {
             String addressEn = Utils.toEn(addressToHandle.toLowerCase());
             String keywordEn = Utils.toEn(keyword);
             int indexOfKeyword = addressEn.indexOf(keywordEn);
+            if (indexOfKeyword < 0) {
+                result.add(addressToHandle);
+                continue;
+            }
             String temp = addressToHandle.substring(0, indexOfKeyword);
             int x = temp.lastIndexOf(",");
             if (x < 0) {
