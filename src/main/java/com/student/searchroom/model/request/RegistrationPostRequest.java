@@ -35,6 +35,8 @@ public class RegistrationPostRequest {
     private Double area;
     private String bedroomsDescription;
     private Integer numberOfBedrooms;
+    private Integer numberOfKitchens;
+    private Integer numberOfToilets;
     private String toiletDescription;
     private String kitchensDescription;
     private List<String> imagesUrl;

@@ -32,8 +32,6 @@ public class PostService {
     @Autowired
     private HouseRepository houseRepository;
     @Autowired
-    private UserService userService;
-    @Autowired
     private AddressService addressService;
 
 

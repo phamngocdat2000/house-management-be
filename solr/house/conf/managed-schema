@@ -471,6 +471,8 @@
   <field name="type" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="bedroomsDescription" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="numberOfBedrooms" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>
+  <field name="numberOfKitchens" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>
+  <field name="numberOfToilets" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="area" type="pdouble" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="toiletDescription" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="kitchensDescription" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
