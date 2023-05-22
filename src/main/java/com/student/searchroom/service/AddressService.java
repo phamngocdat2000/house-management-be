@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.File;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,11 +26,11 @@ public class AddressService {
     @PostConstruct
     private void loadData() {
         ClassLoader classLoader = getClass().getClassLoader();
-        File file = new File(classLoader.getResource("address/dvhcvn.json").getFile());
+        InputStream inputStream = AddressService.class.getResourceAsStream("/address/dvhcvn.json");
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         try {
-            this.cities = objectMapper.readValue(file, new TypeReference<List<City>>() {});
+            this.cities = objectMapper.readValue(inputStream, new TypeReference<List<City>>() {});
             this.allDistrict = new ArrayList<>();
             for (City city : this.cities) {
                 this.allDistrict.addAll(city.getDistricts());
