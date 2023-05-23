@@ -455,7 +455,7 @@
   <field name="city" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="createdBy" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="createdDate" type="pdate" multiValued="false" indexed="true" required="false" stored="true"/>
-  <field name="description" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
+  <field name="description" type="text_general" multiValued="false" indexed="false" required="false" stored="true"/>
   <field name="district" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="id" type="string" multiValued="false" indexed="true" required="true" stored="true"/>
   <field name="lastModifiedDate" type="pdate" multiValued="false" indexed="true" required="false" stored="true"/>

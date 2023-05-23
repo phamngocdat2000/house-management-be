@@ -4,7 +4,7 @@ import com.student.searchroom.entity.House;
 
 public final class KeywordGenerator {
 
-    public static String genStringQuerySearchAddress(String keyword, Long minPrice, Long maxPrice, String[] types, Integer numberOfBedrooms) {
+    public static String genStringQuerySearchAddress(String keyword, Long minPrice, Long maxPrice, String[] types, Integer[] numberOfBedrooms) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(genSolrQuerySearchAddress(keyword));
         appendPriceAndType(minPrice, maxPrice, types, stringBuilder);
@@ -12,7 +12,7 @@ public final class KeywordGenerator {
         return stringBuilder.toString();
     }
 
-    public static String genStringQuerySearchAddressAndTitle(String keyword, Long minPrice, Long maxPrice, String[] types, Integer numberOfBedrooms) {
+    public static String genStringQuerySearchAddressAndTitle(String keyword, Long minPrice, Long maxPrice, String[] types, Integer[] numberOfBedrooms) {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(genSolrQuerySearchAddressAndTitle(keyword));
         appendPriceAndType(minPrice, maxPrice, types, stringBuilder);
@@ -20,9 +20,17 @@ public final class KeywordGenerator {
         return stringBuilder.toString();
     }
 
-    private static void appendNumberOfBedrooms(Integer numberOfBedrooms, StringBuilder stringBuilder) {
-        if (numberOfBedrooms != null) {
-            stringBuilder.append(" AND numberOfBedrooms:").append(numberOfBedrooms);
+
+    private static void appendNumberOfBedrooms(Integer[] numberOfBedrooms, StringBuilder stringBuilder) {
+        if (numberOfBedrooms != null && numberOfBedrooms.length > 0) {
+            for (int i = 0; i < numberOfBedrooms.length; i ++) {
+                if (numberOfBedrooms[i] == 4) {
+                    stringBuilder.append(" AND numberOfBedrooms:[").append(numberOfBedrooms[i]).append(" TO *]");
+                } else {
+                    stringBuilder.append(" AND numberOfBedrooms:").append(numberOfBedrooms[i]);
+                }
+            }
+
         }
     }
 

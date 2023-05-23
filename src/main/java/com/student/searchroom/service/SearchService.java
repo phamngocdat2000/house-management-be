@@ -26,7 +26,7 @@ public class SearchService {
         this.houseSolrRepository = houseSolrRepository;
     }
 
-    public List<String> searchAddress(String keyword, Long minPrice, Long maxPrice, Double lat, Double lnp, Double distance, String[] types, Integer numberOfBedrooms) {
+    public List<String> searchAddress(String keyword, Long minPrice, Long maxPrice, Double lat, Double lnp, Double distance, String[] types, Integer[] numberOfBedrooms) {
         keyword = keyword.toLowerCase();
         validateRequest(lat, lnp, distance);
         List<HouseSolr> housesSolr = houseSolrRepository.search(KeywordGenerator.genStringQuerySearchAddress(keyword, minPrice, maxPrice, types, numberOfBedrooms));
@@ -56,7 +56,7 @@ public class SearchService {
         return result;
     }
 
-    public Map<String, Object> searchHouses(String address, Long minPrice, Long maxPrice, Double lat, Double lnp, Double distance, String[] types, Integer numberOfBedrooms) {
+    public Map<String, Object> searchHouses(String address, Long minPrice, Long maxPrice, Double lat, Double lnp, Double distance, String[] types, Integer[] numberOfBedrooms) {
 
         validateRequest(lat, lnp, distance);
         address = address.replace(",", "");
@@ -78,7 +78,7 @@ public class SearchService {
     }
 
 
-    public Map<String, Object> searchHousesByAddressAndTitle(String address, Long minPrice, Long maxPrice, Double lat, Double lnp, Double distance, String[] types, Integer numberOfBedrooms) {
+    public Map<String, Object> searchHousesByAddressAndTitle(String address, Long minPrice, Long maxPrice, Double lat, Double lnp, Double distance, String[] types, Integer[] numberOfBedrooms) {
 
         validateRequest(lat, lnp, distance);
         List<HouseSolr> housesSolr =

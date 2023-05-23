@@ -26,7 +26,7 @@ public class  SearchController {
                                                       @RequestParam(required = false) Double lnp,
                                                       @RequestParam(required = false) Double distance,
                                                       @RequestParam(required = false) String[] types,
-                                                      @RequestParam(required = false) Integer numberOfBedrooms) {
+                                                      @RequestParam(required = false, name = "room") Integer[] numberOfBedrooms) {
 
         return ResponseEntity.ok(searchService.searchAddress(keyword, minPrice, maxPrice, lat, lnp, distance, types, numberOfBedrooms));
     }
@@ -39,7 +39,7 @@ public class  SearchController {
                                                             @RequestParam(required = false) Double lnp,
                                                             @RequestParam(required = false) Double distance,
                                                             @RequestParam(required = false) String[] types,
-                                                            @RequestParam(required = false) Integer numberOfBedrooms) {
+                                                            @RequestParam(required = false, name = "room") Integer[] numberOfBedrooms) {
         return ResponseEntity.ok(searchService.searchHouses(address, minPrice, maxPrice, lat, lnp, distance, types, numberOfBedrooms));
     }
 
@@ -51,7 +51,7 @@ public class  SearchController {
                                                                              @RequestParam(required = false) Double lnp,
                                                                              @RequestParam(required = false) Double distance,
                                                                              @RequestParam(required = false) String[] types,
-                                                                             @RequestParam(required = false) Integer numberOfBedrooms) {
+                                                                             @RequestParam(required = false, name = "room") Integer[] numberOfBedrooms) {
         return ResponseEntity.ok(searchService.searchHousesByAddressAndTitle(address, minPrice, maxPrice, lat, lnp, distance, types, numberOfBedrooms));
     }
 }
