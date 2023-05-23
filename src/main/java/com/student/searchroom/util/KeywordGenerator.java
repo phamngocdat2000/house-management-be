@@ -1,6 +1,5 @@
 package com.student.searchroom.util;
 
-import com.student.searchroom.entity.House;
 
 public final class KeywordGenerator {
 
@@ -23,14 +22,32 @@ public final class KeywordGenerator {
 
     private static void appendNumberOfBedrooms(Integer[] numberOfBedrooms, StringBuilder stringBuilder) {
         if (numberOfBedrooms != null && numberOfBedrooms.length > 0) {
-            for (int i = 0; i < numberOfBedrooms.length; i ++) {
-                if (numberOfBedrooms[i] == 4) {
-                    stringBuilder.append(" AND numberOfBedrooms:[").append(numberOfBedrooms[i]).append(" TO *]");
+            if (numberOfBedrooms.length == 1) {
+                if (numberOfBedrooms[0] == 4) {
+                    stringBuilder.append(" AND numberOfBedrooms:[").append(numberOfBedrooms[0]).append(" TO *]");
                 } else {
-                    stringBuilder.append(" AND numberOfBedrooms:").append(numberOfBedrooms[i]);
+                    stringBuilder.append(" AND  numberOfBedrooms:").append(numberOfBedrooms[0]);
                 }
+                return;
             }
+            stringBuilder.append("AND (");
+            if (numberOfBedrooms[0] == 4) {
+                stringBuilder.append("numberOfBedrooms:[").append(numberOfBedrooms[0]).append(" TO *]");
+            } else {
+                stringBuilder.append("numberOfBedrooms:").append(numberOfBedrooms[0]);
+            }
+            for (int i = 1; i < numberOfBedrooms.length; i ++) {
+                appendNumberOfBedroomsOption(numberOfBedrooms[i], stringBuilder);
+            }
+            stringBuilder.append(")");
+        }
+    }
 
+    private static void appendNumberOfBedroomsOption(Integer numberOfBedrooms, StringBuilder stringBuilder) {
+        if (numberOfBedrooms == 4) {
+            stringBuilder.append(" OR numberOfBedrooms:[").append(numberOfBedrooms).append(" TO *]");
+        } else {
+            stringBuilder.append(" OR numberOfBedrooms:").append(numberOfBedrooms);
         }
     }
 
