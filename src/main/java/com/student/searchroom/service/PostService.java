@@ -101,12 +101,21 @@ public class PostService {
         String currentNick = SecurityUtil.getCurrentUsername();
         House houseToUpdate = houseRepository.findById(postId).orElseThrow(() ->
                 new SearchRoomException(ErrorCode.POST_NOT_FOUND));
-        if (!houseToUpdate.getCreatedBy().equals(currentNick)) throw new SearchRoomException(ErrorCode.BAD_REQUEST);
+        if (!houseToUpdate.getCreatedBy().equals(currentNick)) throw new SearchRoomException(ErrorCode.ACCESS_DENIED);
         request.updateHouse(houseToUpdate);
         validateAddressInPost(houseToUpdate);
         House result = houseRepository.save(houseToUpdate);
         indexHouseToSolr(result);
         return HouseResponse.from(result);
+    }
+
+    public void deletePostById(Long postId) {
+        String currentNick = SecurityUtil.getCurrentUsername();
+        House houseToDelete = houseRepository.findById(postId).orElseThrow(() ->
+                new SearchRoomException(ErrorCode.POST_NOT_FOUND));
+        if (!houseToDelete.getCreatedBy().equals(currentNick)) throw new SearchRoomException(ErrorCode.ACCESS_DENIED);
+        houseRepository.delete(houseToDelete);
+        houseSolrRepository.deleteById(postId + "");
     }
 
 

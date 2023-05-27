@@ -7,6 +7,7 @@ import com.student.searchroom.model.response.HouseResponse;
 import com.student.searchroom.service.PostService;
 import com.student.searchroom.solr.entity.HouseSolr;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,12 @@ public class PostController {
     public ResponseEntity<HouseResponse> updatePost(@RequestBody UpdatePostRequest request,
                                             @PathVariable Long postId) {
         return ResponseEntity.ok(postService.updatePost(request, postId));
+    }
+
+    @DeleteMapping("/post/{postId}")
+    public ResponseEntity<HttpStatus> deletePost(@PathVariable Long postId) {
+        postService.deletePostById(postId);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @GetMapping("/post/{id}")
