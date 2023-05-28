@@ -60,10 +60,10 @@ public class RatingService {
     }
 
     public List<RatingResponse> getByUsername(String username) {
-        List<Rating> ratings = ratingRepository.findAllByUsernameOrderByCreatedAt(username);
+        List<Rating> ratings = ratingRepository.findAllByUsernameOrderByCreatedAtDesc(username);
         List<RatingResponse> result = new ArrayList<>();
         ratings.forEach(rating -> {
-            result.add(RatingResponse.from(rating, UserResponse.from(userRepository.getById(rating.getUsername()))));
+            result.add(RatingResponse.from(rating, UserResponse.from(userRepository.getById(rating.getCreatedBy()))));
         });
         return result;
     }

@@ -9,5 +9,6 @@ public interface RatingRepository extends JpaRepository<Rating, Long> {
     Rating findByCreatedByAndUsername(String createdBy, String username);
 
     List<Rating> findAllByUsername(String username);
-    List<Rating> findAllByUsernameOrderByCreatedAt(String username);
+
+    List<Rating> findAllByUsernameOrderByCreatedAtDesc(String username);
 }

@@ -84,7 +84,7 @@ public class PostService {
             if (source.contains(addressWords[i]))
                 point ++;
         }
-        if (point < 4)
+        if (point < 5)
             throw new SearchRoomException(ErrorCode.ADDRESS_INVALID);
     }
 
