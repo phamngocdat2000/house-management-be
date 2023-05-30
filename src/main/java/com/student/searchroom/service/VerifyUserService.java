@@ -79,7 +79,7 @@ public class VerifyUserService {
     private void canSendVerifyRequest() {
         String currentUsername = SecurityUtil.getCurrentUsername();
         User currentUser = userService.getByUsername(currentUsername);
-        if (currentUser.getIsVerified())
+        if (currentUser.getIsVerified() != null && currentUser.getIsVerified())
             throw new SearchRoomException(ErrorCode.ACCOUNT_IS_VERIFIED);
     }
 }
