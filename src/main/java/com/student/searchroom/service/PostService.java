@@ -1,6 +1,7 @@
 package com.student.searchroom.service;
 
 import com.student.searchroom.entity.House;
+import com.student.searchroom.entity.User;
 import com.student.searchroom.exception.SearchRoomException;
 import com.student.searchroom.model.error.ErrorCode;
 import com.student.searchroom.model.request.RegistrationPostRequest;
@@ -33,12 +34,15 @@ public class PostService {
     private HouseRepository houseRepository;
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private UserService userService;
 
 
 
     public HouseResponse registrationPost(RegistrationPostRequest request) {
         House toSave = request.toHouse();
         String currentUser = SecurityUtil.getCurrentUsername();
+        canRegistrationPost(currentUser);
 
         toSave.setCreatedBy(currentUser);
         try {
@@ -51,6 +55,12 @@ public class PostService {
         House result = houseRepository.save(toSave);
         indexHouseToSolr(result);
         return HouseResponse.from(result);
+    }
+
+    private void canRegistrationPost(String username) {
+        User user = userService.getByUsername(username);
+        if (user.getIsVerified() == null || !user.getIsVerified())
+            throw new SearchRoomException(ErrorCode.NEED_VERIFY_ACCOUNT);
     }
 
     private void validateAddressInPost(House house) {
@@ -99,6 +109,7 @@ public class PostService {
 
     public HouseResponse updatePost(UpdatePostRequest request, Long postId) {
         String currentNick = SecurityUtil.getCurrentUsername();
+        canRegistrationPost(currentNick);
         House houseToUpdate = houseRepository.findById(postId).orElseThrow(() ->
                 new SearchRoomException(ErrorCode.POST_NOT_FOUND));
         if (!houseToUpdate.getCreatedBy().equals(currentNick)) throw new SearchRoomException(ErrorCode.ACCESS_DENIED);

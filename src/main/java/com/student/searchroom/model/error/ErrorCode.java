@@ -24,7 +24,11 @@ public enum ErrorCode {
     RATING_ALREADY_EXIST("APP-30", "Rating already exist!", HttpStatus.BAD_REQUEST),
     CODE_INVALID("APP-31", "Code invalid!", HttpStatus.BAD_REQUEST),
     CODE_IS_EXPIRE("APP-32", "Code is expire!", HttpStatus.BAD_REQUEST),
-    ADDRESS_INVALID("APP-33", "address invalid!", HttpStatus.BAD_REQUEST);
+    ADDRESS_INVALID("APP-33", "address invalid!", HttpStatus.BAD_REQUEST),
+    NEED_VERIFY_ACCOUNT("APP-34", "Bạn cần gửi yêu cầu xác thực cho admin duyệt để được đăng bài!", HttpStatus.BAD_REQUEST),
+    ACCOUNT_IS_VERIFIED("APP-35", "Tài khoản đã được xác thực!", HttpStatus.BAD_REQUEST),
+    VERIFY_REQUEST_NOT_FOUND("APP-36", "verify request not found!", HttpStatus.NOT_FOUND),
+    IMAGES_IS_REQUIRED("APP-37", "Yêu cầu thêm ảnh!", HttpStatus.BAD_REQUEST);
 
 
     private String code;

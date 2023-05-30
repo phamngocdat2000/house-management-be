@@ -30,6 +30,7 @@ public class RegisterUserRequest {
         user.setEmail(this.email);
         user.setPhone(this.phone);
         user.setAvaUrl(this.avaUrl);
+        user.setIsVerified(false);
         user.setProvider(User.Provider.LOCAL);
         return user;
     }

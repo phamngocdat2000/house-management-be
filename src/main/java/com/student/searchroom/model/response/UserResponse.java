@@ -26,6 +26,7 @@ public class UserResponse {
     private String createdBy;
     private Double ratingValue;
     private boolean isActive;
+    private Boolean isVerified;
     public static UserResponse from(User user) {
         UserResponse result = new UserResponse();
         BeanUtils.copyProperties(user, result);
@@ -33,6 +34,8 @@ public class UserResponse {
             result.setAuthorities(user.getAuthorities().stream()
                     .map(authority -> AuthorityResponse.from(authority))
                     .collect(Collectors.toList()));
+        if (user.getIsVerified() == null)
+            result.setIsVerified(false);
         return result;
     }
 }

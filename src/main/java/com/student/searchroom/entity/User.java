@@ -26,6 +26,7 @@ public class User {
     private Provider provider;
     private String createdBy;
     private Double ratingValue;
+    private Boolean isVerified;
     private boolean isActive;
 
     public enum Provider {
