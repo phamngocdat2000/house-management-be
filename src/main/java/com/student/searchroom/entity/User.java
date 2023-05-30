@@ -32,4 +32,8 @@ public class User {
     public enum Provider {
         LOCAL, GOOGLE, FACEBOOK
     }
+
+    public Boolean getIsVerified() {
+        return this.isVerified != null && this.isVerified;
+    }
 }

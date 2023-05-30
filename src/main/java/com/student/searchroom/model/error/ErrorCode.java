@@ -28,7 +28,8 @@ public enum ErrorCode {
     NEED_VERIFY_ACCOUNT("APP-34", "Bạn cần gửi yêu cầu xác thực cho admin duyệt để được đăng bài!", HttpStatus.BAD_REQUEST),
     ACCOUNT_IS_VERIFIED("APP-35", "Tài khoản đã được xác thực!", HttpStatus.BAD_REQUEST),
     VERIFY_REQUEST_NOT_FOUND("APP-36", "verify request not found!", HttpStatus.NOT_FOUND),
-    IMAGES_IS_REQUIRED("APP-37", "Yêu cầu thêm ảnh!", HttpStatus.BAD_REQUEST);
+    IMAGES_IS_REQUIRED("APP-37", "Yêu cầu thêm ảnh!", HttpStatus.BAD_REQUEST),
+    VERIFY_USER_REQUEST_EXISTED("APP-38", "Yêu cầu đã tồn tại!", HttpStatus.CONFLICT);
 
 
     private String code;

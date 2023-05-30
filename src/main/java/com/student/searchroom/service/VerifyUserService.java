@@ -26,6 +26,8 @@ public class VerifyUserService {
 
     public VerifyUser registrationVerifyUser(VerifyUserRequest verifyUserRequest) {
         String currentUsername = SecurityUtil.getCurrentUsername();
+        if (verifyUserRepository.findById(currentUsername).isPresent())
+            throw new SearchRoomException(ErrorCode.VERIFY_USER_REQUEST_EXISTED);
         if (verifyUserRequest.getImagesUrl() == null || verifyUserRequest.getImagesUrl().isEmpty())
             throw new SearchRoomException(ErrorCode.IMAGES_IS_REQUIRED);
         canSendVerifyRequest();
