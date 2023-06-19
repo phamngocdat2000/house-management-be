@@ -1,5 +1,6 @@
 package com.student.searchroom.service;
 
+import com.student.searchroom.entity.Authority;
 import com.student.searchroom.entity.House;
 import com.student.searchroom.entity.User;
 import com.student.searchroom.exception.SearchRoomException;
@@ -59,8 +60,18 @@ public class PostService {
 
     private void canRegistrationPost(String username) {
         User user = userService.getByUsername(username);
-        if (user.getIsVerified() == null || !user.getIsVerified())
+        if ((user.getIsVerified() == null || !user.getIsVerified()) && !isAdmin(user)) {
             throw new SearchRoomException(ErrorCode.NEED_VERIFY_ACCOUNT);
+        }
+    }
+
+    private boolean isAdmin(User user) {
+        List<Authority> authorities = user.getAuthorities();
+        for (Authority authority : authorities) {
+            if (authority.getRole().equals(Authority.Role.ROLE_ADMIN))
+                return true;
+        }
+        return false;
     }
 
     private void validateAddressInPost(House house) {
