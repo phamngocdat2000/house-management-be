@@ -3,6 +3,7 @@ package com.student.searchroom.model.response;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.student.searchroom.entity.Authority;
 import com.student.searchroom.entity.User;
+import com.student.searchroom.entity.VerifyUser;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;
 
@@ -27,6 +28,7 @@ public class UserResponse {
     private Double ratingValue;
     private boolean isActive;
     private Boolean isVerified;
+    private VerifyUser.Status verifyStatus;
     public static UserResponse from(User user) {
         UserResponse result = new UserResponse();
         BeanUtils.copyProperties(user, result);

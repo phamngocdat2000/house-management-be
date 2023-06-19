@@ -7,10 +7,13 @@ import com.student.searchroom.exception.SearchRoomException;
 import com.student.searchroom.model.error.ErrorCode;
 import com.student.searchroom.model.request.RegisterUserRequest;
 import com.student.searchroom.model.request.UpdateUserRequest;
+import com.student.searchroom.model.request.VerifyUserRequest;
 import com.student.searchroom.model.response.UserResponse;
 import com.student.searchroom.repository.AuthorityRepository;
 import com.student.searchroom.repository.UserRepository;
+import com.student.searchroom.repository.VerifyUserRepository;
 import com.student.searchroom.security.SecurityUtil;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,13 +21,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
+@Log4j2
 public class UserService implements UserDetailsService  {
     @Autowired
     private PasswordEncoder passwordEncoder;

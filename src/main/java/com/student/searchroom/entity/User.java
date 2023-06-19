@@ -26,6 +26,8 @@ public class User {
     private Provider provider;
     private String createdBy;
     private Double ratingValue;
+    @Enumerated(EnumType.STRING)
+    private VerifyUser.Status verifyStatus;
     private Boolean isVerified;
     private boolean isActive;
 

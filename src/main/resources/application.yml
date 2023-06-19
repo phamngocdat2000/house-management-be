@@ -13,9 +13,9 @@ server:
     connection-timeout: 500000
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/search_room?allowPublicKeyRetrieval=true&useSSL=false
-    username: root
-    password: phikm1203
+    url: jdbc:mysql://3.0.147.195:3306/search_room?allowPublicKeyRetrieval=true&useSSL=false
+    username: house
+    password: house@1234
 
   security:
     oauth2:

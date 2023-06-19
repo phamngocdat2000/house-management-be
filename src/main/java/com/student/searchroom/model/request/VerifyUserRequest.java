@@ -5,7 +5,6 @@ import com.student.searchroom.entity.VerifyUser;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 
-import javax.validation.constraints.NotNull;
 import java.util.Date;
 import java.util.List;
 
