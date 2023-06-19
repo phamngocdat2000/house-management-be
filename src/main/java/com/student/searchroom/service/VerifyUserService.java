@@ -30,8 +30,9 @@ public class VerifyUserService {
             throw new SearchRoomException(ErrorCode.VERIFY_USER_REQUEST_EXISTED);
         if (verifyUserRequest.getImagesUrl() == null || verifyUserRequest.getImagesUrl().isEmpty())
             throw new SearchRoomException(ErrorCode.IMAGES_IS_REQUIRED);
-        canSendVerifyRequest();
+        User currentUser = canSendVerifyRequest();
 
+        currentUser.setVerifyStatus(VerifyUser.Status.PENDING);
         return verifyUserRepository.save(verifyUserRequest.toVerifyUser(currentUsername));
     }
 
@@ -40,7 +41,9 @@ public class VerifyUserService {
         VerifyUser verifyUserToUpdate = verifyUserRepository.findById(currentUsername).orElseThrow(() ->
                 new SearchRoomException(ErrorCode.VERIFY_REQUEST_NOT_FOUND));
 
-        canSendVerifyRequest();
+        User currentUser = canSendVerifyRequest();
+
+        currentUser.setVerifyStatus(VerifyUser.Status.PENDING);
         return verifyUserRepository.save(request.update(verifyUserToUpdate));
     }
 
@@ -68,6 +71,7 @@ public class VerifyUserService {
         User userToUpdate = userService.getByUsername(username);
         verifyUserRepository.delete(existVerifyUser);
         userToUpdate.setIsVerified(true);
+        userToUpdate.setVerifyStatus(null);
         userService.save(userToUpdate);
     }
 
@@ -75,13 +79,18 @@ public class VerifyUserService {
         VerifyUser existVerifyUser = verifyUserRepository.findById(username).orElseThrow(() ->
                 new SearchRoomException(ErrorCode.VERIFY_REQUEST_NOT_FOUND));
         existVerifyUser.setStatus(VerifyUser.Status.UPDATE_REQUEST);
+        User userToRequest = userService.getByUsername(username);
+
+        userToRequest.setVerifyStatus(VerifyUser.Status.UPDATE_REQUEST);
+        userService.save(userToRequest);
         verifyUserRepository.save(existVerifyUser);
     }
 
-    private void canSendVerifyRequest() {
+    private User canSendVerifyRequest() {
         String currentUsername = SecurityUtil.getCurrentUsername();
         User currentUser = userService.getByUsername(currentUsername);
         if (currentUser.getIsVerified() != null && currentUser.getIsVerified())
             throw new SearchRoomException(ErrorCode.ACCOUNT_IS_VERIFIED);
+        return currentUser;
     }
 }
