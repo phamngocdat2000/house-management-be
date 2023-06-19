@@ -8,17 +8,17 @@ import javax.validation.constraints.Pattern;
 
 @Data
 public class RegisterUserRequest {
-    @NotBlank(message = "username is required!")
+    @NotBlank(message = "Không được để trống username!")
     private String username;
-    @NotBlank(message = "password is required!")
+    @NotBlank(message = "Không được để trống mật khẩu!")
     private String password;
-    @NotBlank(message = "fullName is required!")
+    @NotBlank(message = "Không được để trống họ tên!")
     private String fullName;
-    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "invalid email!")
-    @NotBlank(message = "email is required!")
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "Email không đúng định dạng!")
+    @NotBlank(message = "Không được để trống email!")
     private String email;
-    @Pattern(regexp = "^[0-9\\-\\+]{9,15}$", message = "invalid phone number!")
-    @NotBlank(message = "phone is required!")
+    @Pattern(regexp = "^[0-9\\-\\+]{9,15}$", message = "Số điện thoại không đúng định dạng!")
+    @NotBlank(message = "Không được để trống số điện thoại!")
     private String phone;
     private String avaUrl;
 

@@ -6,6 +6,6 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class SetAuthorityRequest {
-    @NotBlank(message = "username is required!")
+    @NotBlank(message = "KHông được để trống username!")
     private String username;
 }

@@ -6,10 +6,10 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class ResetPasswordRequest {
-    @NotBlank(message = "username is required!")
+    @NotBlank(message = "Không được để trống username!")
     private String username;
-    @NotBlank(message = "code is required!")
+    @NotBlank(message = "Không được để trống code!")
     private String code;
-    @NotBlank(message = "new pass is required!")
+    @NotBlank(message = "Không được để trống mật khẩu mới!")
     private String newPassword;
 }

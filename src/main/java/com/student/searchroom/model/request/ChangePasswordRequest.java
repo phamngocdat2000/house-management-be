@@ -6,10 +6,10 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class ChangePasswordRequest {
-    @NotBlank(message = "username is required!")
+    @NotBlank(message = "Không được để trống username!")
     private String username;
-    @NotBlank(message = "oldPassword is required!")
+    @NotBlank(message = "Không được để trống mật khẩu cũ!")
     private String oldPassword;
-    @NotBlank(message = "newPassword is required!")
+    @NotBlank(message = "Không được để trống mật khẩu mới!")
     private String newPassword;
 }

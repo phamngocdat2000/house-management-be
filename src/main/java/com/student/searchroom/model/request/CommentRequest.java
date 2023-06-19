@@ -6,6 +6,6 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class CommentRequest {
-    @NotBlank(message = "content is required!")
+    @NotBlank(message = "Không được để trống nội dung bình luận!")
     private String content;
 }

@@ -10,9 +10,9 @@ import java.util.Date;
 @Data
 public class UpdateUserRequest {
     private String fullName;
-    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "invalid email!")
+    @Pattern(regexp = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$", message = "địa chỉ email không đúng định dạng!")
     private String email;
-    @Pattern(regexp = "^[0-9\\-\\+]{9,15}$", message = "invalid phone number!")
+    @Pattern(regexp = "^[0-9\\-\\+]{9,15}$", message = "số điện thoại không đúng định dạng!")
     private String phone;
     private Boolean isActive;
     private String avaUrl;

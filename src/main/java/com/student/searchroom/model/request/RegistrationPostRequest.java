@@ -11,26 +11,26 @@ import java.util.List;
 
 @Data
 public class RegistrationPostRequest {
-    @NotBlank(message = "title is required!")
+    @NotBlank(message = "Không được để trống tiêu đề!")
     private String title;
-    @NotNull(message = "price is required!")
+    @NotNull(message = "Phải nhập giá!")
     private Long price;
-    @NotBlank(message = "description is required!")
+    @NotBlank(message = "Không được để trống mô tả!")
     private String description;
-    @NotBlank(message = "lat is required!")
+    @NotBlank(message = "Yêu cầu kinh độ!")
     private String lat;
-    @NotNull(message = "lnp is required!")
+    @NotNull(message = "Yêu cầu vĩ độ!")
     private String lnp;
     private String name;
-    @NotBlank(message = "address is required!")
+    @NotBlank(message = "Không được để trống địa chỉ chi tiết!")
     private String address;
-    @NotBlank(message = "city is required!")
+    @NotBlank(message = "Không được để trống tên thành phố!")
     private String city;
-    @NotBlank(message = "district is required!")
+    @NotBlank(message = "Không được để trống tên Quận, Huyện!")
     private String district;
-    @NotBlank(message = "street is required!")
+    @NotBlank(message = "Không được để trống tên Phường, Xã!")
     private String street;
-    @NotBlank(message = "type is required!")
+    @NotBlank(message = "Yêu cầu kiểu nhà!")
     private String type;
     private Double area;
     private String bedroomsDescription;

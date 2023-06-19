@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 @Data
 public class RatingRequest {
-    @NotNull(message = "ratingValue is required!")
+    @NotNull(message = "Không được để trống ratingValue!")
     @Max(value = 5, message = "ratingValue max = 5")
     @Min(value = 0, message = "ratingValue min = 0")
     private int ratingValue;

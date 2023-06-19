@@ -6,6 +6,6 @@ import javax.validation.constraints.NotBlank;
 
 @Data
 public class BanUserRequest {
-    @NotBlank(message = "username is required!")
+    @NotBlank(message = "Không được để trống username!")
     private String username;
 }
