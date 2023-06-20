@@ -61,7 +61,7 @@ app:
     password: admin
 
 solr:
-  url: http://20.39.185.145:8500/solr
+  url: http://35.247.146.225:8500/solr
 
 logging:
   config: config/log4j2.yml

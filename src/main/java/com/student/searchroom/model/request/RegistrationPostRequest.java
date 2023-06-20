@@ -51,6 +51,7 @@ public class RegistrationPostRequest {
 
             }
         }
+        result.setStatus(1);
         return result;
     }
 }

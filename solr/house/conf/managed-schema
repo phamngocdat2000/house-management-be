@@ -470,6 +470,7 @@
   <field name="addressAndTitle" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="type" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="bedroomsDescription" type="string" multiValued="false" indexed="true" required="false" stored="true"/>
+  <field name="status" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="numberOfBedrooms" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="numberOfKitchens" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>
   <field name="numberOfToilets" type="pint" multiValued="false" indexed="true" required="false" stored="true"/>

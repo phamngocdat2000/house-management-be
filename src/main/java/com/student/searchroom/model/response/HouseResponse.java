@@ -37,6 +37,7 @@ public class HouseResponse {
     private String toiletDescription;
     private String kitchensDescription;
     private Double area;
+    private Integer status;
     private List<String> imagesUrl;
     private House.Type type;
 

@@ -21,6 +21,7 @@ public class UpdatePostRequest {
     private String city;
     private String district;
     private String street;
+    private Integer status;
     private String bedroomsDescription;
     private Integer numberOfBedrooms;
     private Integer numberOfKitchens;

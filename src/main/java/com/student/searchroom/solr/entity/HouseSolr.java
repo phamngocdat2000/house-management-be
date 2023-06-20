@@ -58,6 +58,8 @@ public class HouseSolr {
     private Integer numberOfBedrooms;
     @Indexed(name = "numberOfKitchens", type = "int")
     private Integer numberOfKitchens;
+    @Indexed(name = "status", type = "int")
+    private Integer status;
     @Indexed(name = "numberOfToilets", type = "int")
     private Integer numberOfToilets;
     @Indexed(name = "toiletDescription", type = "string")

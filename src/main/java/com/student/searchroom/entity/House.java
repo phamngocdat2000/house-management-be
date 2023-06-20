@@ -37,6 +37,7 @@ public class House implements Serializable {
     private Integer numberOfToilets;
     private String toiletDescription;
     private String kitchensDescription;
+    private Integer status;
     private Double area;
     @Lob
     private String imagesUrl;

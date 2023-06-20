@@ -22,6 +22,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,6 +40,16 @@ public class PostService {
     private UserService userService;
 
 
+    @PostConstruct
+    private void updateDataPost() {
+        List<House> houses = houseRepository.findAll();
+        for (House house : houses) {
+            house.setStatus(1);
+            houseRepository.save(house);
+            indexHouseToSolr(house);
+        }
+        log.info("---------update data post done");
+    }
 
     public HouseResponse registrationPost(RegistrationPostRequest request) {
         House toSave = request.toHouse();
@@ -126,6 +137,10 @@ public class PostService {
         if (!houseToUpdate.getCreatedBy().equals(currentNick)) throw new SearchRoomException(ErrorCode.ACCESS_DENIED);
         request.updateHouse(houseToUpdate);
         validateAddressInPost(houseToUpdate);
+
+        if (houseToUpdate.getStatus() != 1 || houseToUpdate.getStatus() != 0)
+            throw new SearchRoomException(ErrorCode.POST_STATUS_INVALID);
+
         House result = houseRepository.save(houseToUpdate);
         indexHouseToSolr(result);
         return HouseResponse.from(result);
