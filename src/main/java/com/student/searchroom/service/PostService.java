@@ -40,17 +40,6 @@ public class PostService {
     private UserService userService;
 
 
-    @PostConstruct
-    private void updateDataPost() {
-        List<House> houses = houseRepository.findAll();
-        for (House house : houses) {
-            house.setStatus(1);
-            houseRepository.save(house);
-            indexHouseToSolr(house);
-        }
-        log.info("---------update data post done");
-    }
-
     public HouseResponse registrationPost(RegistrationPostRequest request) {
         House toSave = request.toHouse();
         String currentUser = SecurityUtil.getCurrentUsername();
