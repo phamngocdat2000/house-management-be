@@ -127,7 +127,7 @@ public class PostService {
         request.updateHouse(houseToUpdate);
         validateAddressInPost(houseToUpdate);
 
-        if (houseToUpdate.getStatus() != 1 || houseToUpdate.getStatus() != 0)
+        if (houseToUpdate.getStatus() != 1 && houseToUpdate.getStatus() != 0)
             throw new SearchRoomException(ErrorCode.POST_STATUS_INVALID);
 
         House result = houseRepository.save(houseToUpdate);
